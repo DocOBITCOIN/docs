@@ -100,6 +100,16 @@ curl https://api.uphold.com/v0/me/tokens \
   -d '{ "description": "My command line script" }'
 ```
 
+> The above command returns the following JSON:
+
+```json
+{
+    "accessToken":"c386ae9c4557c1c661b15911071b06d9e6c3fc9a",
+    "description":"My command line script",
+    "id":"a97bb994-6e24-4a89-b653-e0a6d0bcf634"
+}
+```
+
 To create a Personal Access Token you may use the following endpoint:
 
 `POST https://api.uphold.com/v0/me/tokens`
@@ -138,12 +148,12 @@ token     | yes      | The PAT you wish to revoke.
 
 ```bash
 curl https://api.uphold.com/v0/me \
-  -u 41ee8b1fa14042e031fe304bb4793b54e6576d19b306dc205136172b80d59d20:X-OAuth-Basic
+  -H "Authorization: Bearer <token>"
 ```
 
-A PAT may be used for authenticating a request via the HTTP Basic Authentication scheme.
+A PAT may be used for authenticating a request via the OAuth scheme.
 
-The username should be set as the `token` and password should be set to `X-OAuth-Basic`.
+The `<token>` should be set as the `accessToken` received during creation.
 
 ## Basic Authentication
 > Simple request using username or email and password:
